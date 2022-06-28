@@ -18,6 +18,7 @@ steps:
   - |
       for dir in gcp-gke/terraform/uswest1-jonathan/cloudbuild/*
       do 
+        ls -la  ${dir}
         cd ${dir}   
         env=${dir%*/}
         env=${env#*/}
