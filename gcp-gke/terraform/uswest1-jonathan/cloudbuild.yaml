@@ -16,7 +16,7 @@ steps:
   args: 
   - '-c'
   - |
-      for dir in cloudbuild/*/
+      for dir in gcp-gke/terraform/uswest1-jonathan/cloudbuild/*/
       do 
         cd ${dir}   
         env=${dir%*/}
@@ -35,7 +35,7 @@ steps:
   args: 
   - '-c'
   - | 
-      for dir in cloudbuild/*/
+      for dir in gcp-gke/terraform/uswest1-jonathan/cloudbuild/*/
       do 
         cd ${dir}   
         env=${dir%*/}
