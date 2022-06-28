@@ -27,12 +27,12 @@ variable "helm_version" {
 provider "helm" {
 
   kubernetes {
+    load_config_file = false
     host  = "https://${data.google_container_cluster.cluster02.endpoint}"
     token = data.google_client_config.provider.access_token
     cluster_ca_certificate = base64decode(
       data.google_container_cluster.cluster02.master_auth[0].cluster_ca_certificate,
     )
-    config_path = "~/.kube/config"
   }
 }
 

@@ -94,6 +94,3 @@ resource helm_release clusterIssuers {
     value = var.email
   }
 }
-
-
-
