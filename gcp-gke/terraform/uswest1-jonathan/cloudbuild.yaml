@@ -44,7 +44,7 @@ steps:
         echo "*************** TERRAFOM PLAN ******************"
         echo "******* At environment: ${env} ********"
         echo "*************************************************"
-        terraform apply || exit 1
+        terraform apply -auto-approve || exit 1
         cd ../../../../../
       done
 # [END tf-plan]
