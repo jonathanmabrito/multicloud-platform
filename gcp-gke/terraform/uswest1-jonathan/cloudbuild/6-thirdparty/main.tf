@@ -1,7 +1,18 @@
+module "gke_auth" {
+  source = "terraform-google-modules/kubernetes-engine/google//modules/auth"
+  project_id    = "gts-multicloud-pe-dev"
+  cluster_name  = "cluster02"
+  location      = "us-west1"
+}
+
+resource "local_file" "kubeconfig" {
+  content  = module.gke_auth.kubeconfig_raw
+  filename = "${path.module}/kubeconfig"
+}
+
 module "third-party" {
     source  = "../../../../tfm/6-third-party/" #github.com/genesys/multicloud-platform.git//gcp-gke/tfm/5-third-party?ref=master
 }
-
 
 data "google_client_config" "provider" {}
 
@@ -27,13 +38,14 @@ variable "helm_version" {
 provider "helm" {
 
   kubernetes {
-    load_config_file = false
+    load_config_file = "false"
     host  = "https://${data.google_container_cluster.cluster02.endpoint}"
     token = data.google_client_config.provider.access_token
     cluster_ca_certificate = base64decode(
       data.google_container_cluster.cluster02.master_auth[0].cluster_ca_certificate,
     )
   }
+  config_path = "${path.module}/kubeconfig"
 }
 
 provider "google" {

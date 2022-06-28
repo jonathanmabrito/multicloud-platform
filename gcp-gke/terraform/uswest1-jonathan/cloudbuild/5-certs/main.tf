@@ -1,3 +1,15 @@
+module "gke_auth" {
+  source = "terraform-google-modules/kubernetes-engine/google//modules/auth"
+  project_id    = "gts-multicloud-pe-dev"
+  cluster_name  = "cluster02"
+  location      = "us-west1"
+}
+
+resource "local_file" "kubeconfig" {
+  content  = module.gke_auth.kubeconfig_raw
+  filename = "${path.module}/kubeconfig"
+}
+
 module "ingress_certs" {
   source            = "../../../../tfm/5-ingress-certs/" #github.com/genesys/multicloud-platform.git//gcp-gke/tfm/4-ingress-certs?ref=master
   project_id        = "gts-multicloud-pe-dev"
@@ -32,13 +44,13 @@ default = "v2.9.1"
 
 provider "helm" {
   kubernetes {
-    load_config_file = false
     host = "https://${data.google_container_cluster.cluster02.endpoint}"
     token = data.google_client_config.provider.access_token
     cluster_ca_certificate = base64decode(
     data.google_container_cluster.cluster02.master_auth[0].cluster_ca_certificate,
     )
-  } 
+  }
+  config_path = "${path.module}/kubeconfig" 
 }
 
 
