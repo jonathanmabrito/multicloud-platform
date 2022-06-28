@@ -1,4 +1,3 @@
-
 resource "kubernetes_storage_class" "class" {
   metadata {
     name = "csi-standard-rwx"
@@ -15,12 +14,3 @@ resource "kubernetes_storage_class" "class" {
 
   mount_options = ["file_mode=0777", "dir_mode=0777", "mfsymlinks", "uid=500", "gid=500", "cache=strict"]
 }
-
-
-
-
-
-
-
-
-
