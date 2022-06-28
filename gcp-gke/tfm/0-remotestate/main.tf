@@ -11,7 +11,8 @@ locals {
         "networkmanagement.googleapis.com", 
         "datastore.googleapis.com",
         "iap.googleapis.com",
-        "cloudbuild.googleapis.com" ]
+        "cloudbuild.googleapis.com",
+        "cloudresourcemanager.googleapis.com" ]
 }
 
 
@@ -43,4 +44,3 @@ resource "google_storage_bucket" "state-storage" {
     }
 
 }
-
