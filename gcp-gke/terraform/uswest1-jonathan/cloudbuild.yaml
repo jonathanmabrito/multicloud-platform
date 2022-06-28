@@ -43,7 +43,7 @@ steps:
         echo "*************** TERRAFOM PLAN ******************"
         echo "******* At environment: ${env} ********"
         echo "*************************************************"
-        terraform apply -auto-approve || exit 1
+        terraform apply -auto-approve -lock=false || exit 1
         cd ../../../../../
       done
   timeout: '3600s'
