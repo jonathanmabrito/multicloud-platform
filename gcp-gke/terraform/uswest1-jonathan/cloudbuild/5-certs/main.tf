@@ -49,8 +49,8 @@ provider "helm" {
     cluster_ca_certificate = base64decode(
     data.google_container_cluster.cluster02.master_auth[0].cluster_ca_certificate,
     )
+    config_path = "${path.module}/kubeconfig"
   }
-  config_path = "${path.module}/kubeconfig" 
 }
 
 
