@@ -28,7 +28,6 @@ steps:
         terraform init || exit 1
         cd ../../../../../
       done
-# [START tf-plan]
 - id: 'tf apply'
   name: 'hashicorp/terraform:1.0.11'
   entrypoint: 'sh'
@@ -47,4 +46,4 @@ steps:
         terraform apply -auto-approve || exit 1
         cd ../../../../../
       done
-# [END tf-plan]
+  timeout: '3600s'
