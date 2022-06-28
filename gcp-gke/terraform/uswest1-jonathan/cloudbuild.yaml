@@ -18,6 +18,7 @@ steps:
   - |
       for dir in gcp-gke/terraform/uswest1-jonathan/cloudbuild/*
       do 
+        ls -la
         cd ${dir}   
         env=${dir%*/}
         env=${env#*/}
@@ -26,7 +27,7 @@ steps:
         echo "******* At environment: ${env} ********"
         echo "*************************************************"
         terraform init || exit 1
-        cd ../../../../
+        cd ../../../../../
       done
 # [START tf-plan]
 - id: 'tf plan'
@@ -45,6 +46,6 @@ steps:
         echo "******* At environment: ${env} ********"
         echo "*************************************************"
         terraform plan || exit 1
-        cd ../../../../
+        cd ../../../../../
       done
 # [END tf-plan]
