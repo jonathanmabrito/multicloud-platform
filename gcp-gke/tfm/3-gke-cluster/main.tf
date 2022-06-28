@@ -9,7 +9,7 @@ resource "google_container_cluster" "primary" {
   project                     = var.project_id 
   name                        = var.cluster
   location                    = var.region 
-  network                     = data.google_compute_network.vpc1.name
+  network                     = "${var.network_name}"
   subnetwork                  = "${var.environment}-${var.region}-subnet"
   remove_default_node_pool    = true
   initial_node_count          = 1

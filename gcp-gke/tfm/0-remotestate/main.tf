@@ -10,7 +10,8 @@ locals {
         "secretmanager.googleapis.com", 
         "networkmanagement.googleapis.com", 
         "datastore.googleapis.com",
-        "iap.googleapis.com" ]
+        "iap.googleapis.com",
+        "cloudbuild.googleapis.com" ]
 }
 
 
