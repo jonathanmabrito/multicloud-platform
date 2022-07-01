@@ -48,4 +48,5 @@ echo "***********************"
 /builder/google-cloud-sdk/bin/gcloud container clusters get-credentials cluster02 --region us-west1 --project gts-multicloud-pe-dev
 
 #Create or use namespace
-kubectl get namespaces
+ls -la /builder/google-cloud-sdk/bin/
+/builder/google-cloud-sdk/bin/kubectl get namespaces
