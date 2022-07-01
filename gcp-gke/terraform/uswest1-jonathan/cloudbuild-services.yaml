@@ -10,6 +10,6 @@ steps:
       echo "***********************"
       ls -la
 - id: 'Provision Ubuntu'
-  name: 'ubuntu'
+  name: 'gcr.io/gts-multicloud-pe-dev/privateedition'
   entrypoint: 'bash'
   args: ['gcp-gke/terraform/uswest1-jonathan/provision.sh']
