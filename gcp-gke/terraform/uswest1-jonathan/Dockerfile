@@ -13,6 +13,9 @@ RUN apt-get -y install git
 RUN mkdir -p /builder
 RUN wget -qO- https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-392.0.0-linux-x86_64.tar.gz | tar zxv -C /builder
 RUN /builder/google-cloud-sdk/install.sh
+RUN echo $PATH
+RUN export PATH="/builder/google-cloud-sdk/bin:$PATH"
+CMD echo $PATH
 
 # install crcmod: https://cloud.google.com/storage/docs/gsutil/addlhelp/CRC32CandInstallingcrcmod
 RUN pip install -U crcmod
