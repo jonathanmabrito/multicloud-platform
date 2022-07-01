@@ -1,6 +1,6 @@
 #Install Google CLI
 apt-get -y update && \
-apt-get -y install gcc python2.7 python2-dev python3-pip wget ca-certificates software-properties-common
+apt-get -y install gcc python2.7 python2-dev python3-pip wget ca-certificates software-properties-common curl apt-transport-https
 
 # Install Git >2.0.1
 add-apt-repository ppa:git-core/ppa
@@ -28,7 +28,6 @@ echo "***********************"
 echo "Installing HELM"
 echo "***********************"
 curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | tee /usr/share/keyrings/helm.gpg > /dev/null
-apt-get install apt-transport-https --yes
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
 apt-get update
 apt-get install helm
@@ -39,6 +38,7 @@ apt-get install helm
 echo "***********************"
 echo "Logging into GCP"
 echo "***********************"
+ls -la builder/google-cloud-sdk/bin
 ./builder/google-cloud-sdk/bin/gcloud init
 gcloud container clusters get-credentials cluster02 --region us-west1 --project gts-multicloud-pe-dev
 
