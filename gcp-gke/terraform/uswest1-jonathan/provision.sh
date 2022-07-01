@@ -31,6 +31,7 @@ apt-get install helm
 #Add Helm Repo
 
 #Login into GCP
+gcloud container clusters get-credentials cluster02 --region us-west1 --project gts-multicloud-pe-dev
 
 #Create or use namespace
 kubectl get namespaces
