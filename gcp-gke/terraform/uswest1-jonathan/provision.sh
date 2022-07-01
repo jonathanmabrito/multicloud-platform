@@ -37,14 +37,14 @@ apt-get install helm
 echo "***********************"
 echo "Logging into GCP"
 echo "***********************"
-gcloud init --no-launch-browser
-gcloud config set account 729705515652@cloudbuild.gserviceaccount.com
-gcloud auth application-default login --no-launch-browser
+/builder/google-cloud-sdk/bin/gcloud init --no-launch-browser
+/builder/google-cloud-sdk/bin/gcloud config set account 729705515652@cloudbuild.gserviceaccount.com
+/builder/google-cloud-sdk/bin/gcloud auth application-default login --no-launch-browser
 
 echo "***********************"
 echo "Logging into GKE"
 echo "***********************"
-gcloud container clusters get-credentials cluster02 --region us-west1 --project gts-multicloud-pe-dev
+/builder/google-cloud-sdk/bin/gcloud container clusters get-credentials cluster02 --region us-west1 --project gts-multicloud-pe-dev
 
 #Create or use namespace
 kubectl get namespaces
