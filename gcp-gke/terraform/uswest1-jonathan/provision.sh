@@ -1,6 +1,6 @@
 #Install Google CLI
 apt-get -y update && \
-apt-get -y install gcc python2.7 python-dev python3-pip wget ca-certificates \
+apt-get -y install gcc python2.7 python2-dev python3-pip wget ca-certificates \
     # These are necessary for add-apt-respository
     software-properties-common && \
 
