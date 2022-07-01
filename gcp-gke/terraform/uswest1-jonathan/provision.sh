@@ -11,7 +11,7 @@ apt-get -y install git
 mkdir -p /builder
 #wget -qO- https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-392.0.0-linux-x86_64.tar.gz | tar zxv -C /builder
 wget -qO- https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz | tar zxv -C /builder
-/builder/google-cloud-sdk/install.sh --usage-reporting=false --bash-completion=false --disable-installation-options
+/builder/google-cloud-sdk/install.sh --usage-reporting=false --bash-completion=true --disable-installation-options
 
 # install crcmod: https://cloud.google.com/storage/docs/gsutil/addlhelp/CRC32CandInstallingcrcmod
 pip install -U crcmod
@@ -37,9 +37,14 @@ apt-get install helm
 echo "***********************"
 echo "Logging into GCP"
 echo "***********************"
-ls -la /builder/google-cloud-sdk/bin
-/builder/google-cloud-sdk/bin/gcloud init
-/builder/google-cloud-sdk/bin/gcloud gcloud container clusters get-credentials cluster02 --region us-west1 --project gts-multicloud-pe-dev
+gcloud init --no-launch-browser
+gcloud config set account 729705515652@cloudbuild.gserviceaccount.com
+gcloud auth application-default login --no-launch-browser
+
+echo "***********************"
+echo "Logging into GKE"
+echo "***********************"
+gcloud container clusters get-credentials cluster02 --region us-west1 --project gts-multicloud-pe-dev
 
 #Create or use namespace
 kubectl get namespaces
