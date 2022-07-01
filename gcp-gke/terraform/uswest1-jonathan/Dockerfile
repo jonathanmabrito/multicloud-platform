@@ -32,5 +32,5 @@ RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/h
 RUN apt-get update
 RUN apt-get install helm
 
-#Log into GCLOUD CLI and install kubectl
+#Install kubectl with the Google CLI Tools
 RUN /builder/google-cloud-sdk/bin/gcloud components install kubectl
