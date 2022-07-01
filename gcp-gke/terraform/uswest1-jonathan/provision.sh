@@ -37,9 +37,9 @@ apt-get install helm
 echo "***********************"
 echo "Logging into GCP"
 echo "***********************"
-ls -la builder/google-cloud-sdk
-gcloud init
-gcloud container clusters get-credentials cluster02 --region us-west1 --project gts-multicloud-pe-dev
+ls -la /builder/google-cloud-sdk/bin
+/builder/google-cloud-sdk/bin/gcloud init
+/builder/google-cloud-sdk/bin/gcloud gcloud container clusters get-credentials cluster02 --region us-west1 --project gts-multicloud-pe-dev
 
 #Create or use namespace
 kubectl get namespaces
