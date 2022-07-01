@@ -1,0 +1,7 @@
+steps:
+- id: 'Build Private Edition Customer Builder'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/privateedition:${_HELM_VERSION}', '--tag=gcr.io/$PROJECT_ID/privateedition:latest', '--f ./gcp-gke/terraform/uswest1-jonathan/Dockerfile', '.']
+images:
+  - 'gcr.io/$PROJECT_ID/privateedition:${_HELM_VERSION}'
+  - 'gcr.io/$PROJECT_ID/privateedition:latest'
