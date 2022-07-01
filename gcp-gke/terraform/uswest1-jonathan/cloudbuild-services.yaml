@@ -11,10 +11,5 @@ steps:
       ls -la
 - id: 'Provision Ubuntu'
   name: 'ubuntu'
-  args:
-  - '-c'
-  - | 
-      echo "***********************"
-      echo "$BRANCH_NAME"
-      echo "***********************"
-      'gcp-gke/terraform/uswest1-jonathan/provision.sh'
+  entrypoint: 'bash'
+  args: ['gcp-gke/terraform/uswest1-jonathan/provision.sh']
