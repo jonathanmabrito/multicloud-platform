@@ -10,8 +10,8 @@ apt-get -y install git
 # Setup Google Cloud SDK (latest)
 mkdir -p /builder
 #wget -qO- https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-392.0.0-linux-x86_64.tar.gz | tar zxv -C /builder
-wget -qO- https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz | tar zxv -C /builder
-/builder/google-cloud-sdk/install.sh --usage-reporting=false --bash-completion=true --disable-installation-options
+wget -qO- https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-392.0.0-linux-x86_64.tar.gz | tar zxv -C /builder
+/builder/google-cloud-sdk/install.sh
 
 # install crcmod: https://cloud.google.com/storage/docs/gsutil/addlhelp/CRC32CandInstallingcrcmod
 pip install -U crcmod
@@ -38,8 +38,6 @@ echo "***********************"
 echo "Logging into GCP"
 echo "***********************"
 /builder/google-cloud-sdk/bin/gcloud init --no-launch-browser
-#/builder/google-cloud-sdk/bin/gcloud config set account 729705515652@cloudbuild.gserviceaccount.com
-#/builder/google-cloud-sdk/bin/gcloud auth application-default login --no-launch-browser --quiet
 
 echo "***********************"
 echo "Logging into GKE"
@@ -50,3 +48,5 @@ echo "***********************"
 #Create or use namespace
 ls -la /builder/google-cloud-sdk/bin/
 /builder/google-cloud-sdk/bin/kubectl get namespaces
+
+kubectl get namespaces
