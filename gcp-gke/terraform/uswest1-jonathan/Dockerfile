@@ -15,7 +15,7 @@ RUN wget -qO- https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-
 RUN /builder/google-cloud-sdk/install.sh
 RUN echo $PATH
 RUN export PATH="/builder/google-cloud-sdk/bin:$PATH"
-CMD echo $PATH
+RUN echo $PATH
 
 # install crcmod: https://cloud.google.com/storage/docs/gsutil/addlhelp/CRC32CandInstallingcrcmod
 RUN pip install -U crcmod
@@ -31,3 +31,8 @@ RUN curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | tee /usr/share/
 RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
 RUN apt-get update
 RUN apt-get install helm
+
+#Log into GCLOUD CLI and install kubectl
+RUN /builder/google-cloud-sdk/bin/gcloud init --no-launch-browser
+RUN /builder/google-cloud-sdk/bin/gcloud components install kubectl
+RUN /builder/google-cloud-sdk/bin/gcloud container clusters get-credentials cluster02 --region us-west1 --project gts-multicloud-pe-dev
