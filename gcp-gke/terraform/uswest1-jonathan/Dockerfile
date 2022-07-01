@@ -33,6 +33,4 @@ RUN apt-get update
 RUN apt-get install helm
 
 #Log into GCLOUD CLI and install kubectl
-RUN /builder/google-cloud-sdk/bin/gcloud init --no-launch-browser
 RUN /builder/google-cloud-sdk/bin/gcloud components install kubectl
-RUN /builder/google-cloud-sdk/bin/gcloud container clusters get-credentials cluster02 --region us-west1 --project gts-multicloud-pe-dev
