@@ -1,0 +1,20 @@
+steps:
+- id: 'branch name'
+  name: 'alpine'
+  entrypoint: 'sh'  
+  args: 
+  - '-c'
+  - | 
+      echo "***********************"
+      echo "$BRANCH_NAME"
+      echo "***********************"
+      ls -la
+- id: 'Provision Ubuntu'
+  name: 'ubuntu'
+  args:
+  - '-c'
+  - | 
+      echo "***********************"
+      echo "$BRANCH_NAME"
+      echo "***********************"
+      'gcp-gke/terraform/uswest1-jonathan/provision.sh'
