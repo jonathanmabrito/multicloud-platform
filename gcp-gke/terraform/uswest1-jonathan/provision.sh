@@ -11,7 +11,6 @@ apt-get -y install git
 mkdir -p /builder
 #wget -qO- https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-392.0.0-linux-x86_64.tar.gz | tar zxv -C /builder
 wget -qO- https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz | tar zxv -C /builder
-ls -la /builder
 /builder/google-cloud-sdk/install.sh --usage-reporting=false --bash-completion=false --disable-installation-options
 
 # install crcmod: https://cloud.google.com/storage/docs/gsutil/addlhelp/CRC32CandInstallingcrcmod
@@ -38,8 +37,8 @@ apt-get install helm
 echo "***********************"
 echo "Logging into GCP"
 echo "***********************"
-ls -la builder/google-cloud-sdk/bin
-./builder/google-cloud-sdk/bin/gcloud init
+ls -la builder/google-cloud-sdk
+gcloud init
 gcloud container clusters get-credentials cluster02 --region us-west1 --project gts-multicloud-pe-dev
 
 #Create or use namespace
