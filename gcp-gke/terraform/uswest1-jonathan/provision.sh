@@ -13,6 +13,7 @@ echo "Create or use namespace"
 echo "***********************"
 ls -la /builder/google-cloud-sdk/bin/
 /builder/google-cloud-sdk/bin/kubectl get namespaces
+kubectl get namespaces
 
 NS=infra
 if ! /builder/google-cloud-sdk/bin/kubectl get namespaces $NS; then
