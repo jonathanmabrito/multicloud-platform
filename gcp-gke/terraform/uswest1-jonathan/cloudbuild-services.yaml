@@ -1,15 +1,5 @@
 steps:
-- id: 'branch name'
-  name: 'alpine'
-  entrypoint: 'sh'  
-  args: 
-  - '-c'
-  - | 
-      echo "***********************"
-      echo "$BRANCH_NAME"
-      echo "***********************"
-      ls -la
-- id: 'Provision Ubuntu'
+- id: 'Provision Infra Components'
   name: 'gcr.io/gts-multicloud-pe-dev/privateedition'
   entrypoint: 'bash'
   args: ['gcp-gke/terraform/uswest1-jonathan/provision.sh']
