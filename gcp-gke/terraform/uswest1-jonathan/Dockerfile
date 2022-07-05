@@ -2,7 +2,7 @@ FROM ubuntu
 
 #Install Google CLI
 RUN apt-get -y update && \
-apt-get -y install gcc python2.7 python2-dev python3-pip wget ca-certificates software-properties-common curl apt-transport-https
+apt-get -y install gcc python2.7 python2-dev python3-pip wget ca-certificates software-properties-common curl apt-transport-https gettext-base
 
 # Install Git >2.0.1
 RUN add-apt-repository ppa:git-core/ppa
@@ -12,6 +12,7 @@ RUN apt-get -y install git
 # Setup Google Cloud SDK (latest)
 RUN mkdir -p /builder
 RUN wget -qO- https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-392.0.0-linux-x86_64.tar.gz | tar zxv -C /builder
+RUN /builder/google-cloud-sdk/install.sh --help
 RUN /builder/google-cloud-sdk/install.sh
 RUN echo $PATH
 RUN echo "export PATH=/builder/google-cloud-sdk/bin:${PATH}" >> /root/.bashrc
