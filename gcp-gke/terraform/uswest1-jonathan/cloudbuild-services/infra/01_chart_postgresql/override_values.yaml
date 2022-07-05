@@ -5,7 +5,7 @@
 ###############################################################################
 
 global:
-  storageClass: csi-standard-rwx
+  storageClass: standard
   
   postgresql:
     auth:
