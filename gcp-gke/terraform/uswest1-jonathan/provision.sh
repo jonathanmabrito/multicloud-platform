@@ -34,7 +34,7 @@ export DOMAIN=domain.example.com.
 #export IMAGE_REGISTRY=${{ env.IMAGE_REGISTRY }}
 
 cd "./gcp-gke/terraform/uswest1-jonathan/cloudbuild-services/$SERVICE"
-FULLCOMMAND="install"
+FULLCOMMAND="uninstall"
 COMMAND=$(echo $FULLCOMMAND | cut -d' ' -f1)
 if [[ "$FULLCOMMAND" == *" "* ]]; then
     CHART_NAME=$(echo $FULLCOMMAND | tr -s ' ' | cut -d' ' -f2)
