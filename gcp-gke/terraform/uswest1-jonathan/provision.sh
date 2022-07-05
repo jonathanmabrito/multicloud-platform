@@ -9,6 +9,11 @@ echo "***********************"
 /builder/google-cloud-sdk/bin/gcloud container clusters get-credentials cluster02 --region us-west1 --project gts-multicloud-pe-dev
 
 echo "***********************"
+echo "Add Helm Repo"
+echo "***********************"
+#helm repo add --force-update helm_repo ${{ env.HELM_REGISTRY }}${{ github.event.inputs.helmrepo }} --username ${{ env.HELM_REGISTRY_USER }} --password ${{ env.HELM_REGISTRY_TOKEN }}
+
+echo "***********************"
 echo "Create or use namespace"
 echo "***********************"
 ls -la /builder/google-cloud-sdk/bin/
