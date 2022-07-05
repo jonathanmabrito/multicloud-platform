@@ -1,12 +1,12 @@
 echo "***********************"
 echo "Logging into GCP"
 echo "***********************"
-/usr/local/gcloud/google-cloud-sdk/bin/gcloud init --no-launch-browser
+gcloud init --no-launch-browser
 
 echo "***********************"
 echo "Logging into GKE"
 echo "***********************"
-/usr/local/gcloud/google-cloud-sdk/bin/gcloud container clusters get-credentials cluster02 --region us-west1 --project gts-multicloud-pe-dev
+gcloud container clusters get-credentials cluster02 --region us-west1 --project gts-multicloud-pe-dev
 
 echo "***********************"
 echo "Add Helm Repo"
@@ -16,18 +16,14 @@ echo "***********************"
 echo "***********************"
 echo "Create or use namespace"
 echo "***********************"
-ls -la /usr/local/gcloud/google-cloud-sdk/bin/
-/usr/local/gcloud/google-cloud-sdk/bin/kubectl get namespaces
-kubectl get namespaces
-
 NS=infra
-if ! /usr/local/gcloud/google-cloud-sdk/bin/kubectl get namespaces $NS; then
+if ! kubectl get namespaces $NS; then
     echo "Namespace $NS does not exist. Creating it.."
-    /usr/local/gcloud/google-cloud-sdk/bin/kubectl create namespace $NS
+    kubectl create namespace $NS
 else
     echo "Namespace $NS already exists. Will use it."
 fi
-/usr/local/gcloud/google-cloud-sdk/bin/kubectl config set-context --current --namespace=infra
+kubectl config set-context --current --namespace=infra
 
 echo "***********************"
 echo "Run Helm Charts"
