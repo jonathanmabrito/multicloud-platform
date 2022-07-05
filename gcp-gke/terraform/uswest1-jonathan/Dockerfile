@@ -10,11 +10,10 @@ RUN apt-get -y update
 RUN apt-get -y install git
 
 # Setup Google Cloud SDK (latest)
-RUN mkdir -p /builder
-RUN wget -qO- https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-392.0.0-linux-x86_64.tar.gz | tar zxv -C /builder
-RUN /builder/google-cloud-sdk/install.sh --usage-reporting=false --rc-path /root/.bashrc --command-completion =true --path-update=true --quiet
-RUN whoami
-RUN printenv
+RUN mkdir -p /usr/local/gcloud
+RUN wget -qO- https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-392.0.0-linux-x86_64.tar.gz | tar zxv -C /usr/local/gcloud
+RUN /usr/local/gcloud/google-cloud-sdk/install.sh --usage-reporting=false --rc-path /root/.bashrc --command-completion =true --path-update=true --quiet
+ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
 
 # install crcmod: https://cloud.google.com/storage/docs/gsutil/addlhelp/CRC32CandInstallingcrcmod
 RUN pip install -U crcmod
@@ -32,4 +31,4 @@ RUN apt-get update
 RUN apt-get install helm
 
 #Install kubectl with the Google CLI Tools
-RUN /builder/google-cloud-sdk/bin/gcloud components install kubectl
+RUN /usr/local/gcloud/google-cloud-sdk/bin/gcloud components install kubectl
