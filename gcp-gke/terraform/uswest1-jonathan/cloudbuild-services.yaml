@@ -3,3 +3,4 @@ steps:
   name: 'gcr.io/gts-multicloud-pe-dev/privateedition'
   entrypoint: 'bash'
   args: ['gcp-gke/terraform/uswest1-jonathan/provision.sh']
+  timeout: '3600s'
