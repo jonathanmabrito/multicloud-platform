@@ -5,7 +5,7 @@
 ###############################################################################
 
 global:
-  storageClass: nfs-client
+  storageClass: csi-standard-rwx
   
   postgresql:
     auth:
